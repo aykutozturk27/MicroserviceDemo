@@ -1,0 +1,117 @@
+ $scope.uploadCartExcelFileAll = function () {
+        $scope.excelSuccessMessageAll = '';
+        $scope.excelErrorListAll = '';
+        $scope.excelSuccessListAll = '';
+        $scope.excelNotFoundCodesAll = '';
+        var fileUpload = document.getElementById('cart-excel-selectorall');
+        var files = fileUpload.files;
+
+        if (files.length === 0) {
+            iziToast.error({
+                message: ('Script.Pages.Cart.FileUploadMessage').toLanguage(),
+                position: 'topCenter',
+            });
+            return;
+        }
+
+        var fAll = files[0];
+        {
+            fireCustomLoading(true);
+
+            var readerAll = new FileReader();
+            var name = fAll.name;
+            readerAll.onload = function (e) {
+                var data = e.target.result;
+                var workbook = XLSX.read(data, { type: 'binary' });
+                var jsonData;
+                var headerData = [];
+                workbook.SheetNames.forEach(function (sheetName) {
+                    jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { raw: true });
+                });
+
+
+                workbook.SheetNames.forEach(function (sheetName) {
+                    var sheet = workbook.Sheets[sheetName];
+                    var range = XLSX.utils.decode_range(sheet['!ref']);
+                    for (var colNum = range.s.c + 1; colNum <= range.e.c; colNum++) {
+                        var nextCell = sheet[XLSX.utils.encode_cell({ r: 0, c: colNum })];
+                        if (typeof nextCell === 'undefined') {
+                            headerData.push(void 0);
+                        } else {
+                            headerData.push(nextCell.w);
+                        }
+                    }
+                    //headerData.push(workbook.Sheets[sheetName].B1 !== undefined ? workbook.Sheets[sheetName].B1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].C1 !== undefined ? workbook.Sheets[sheetName].C1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].D1 !== undefined ? workbook.Sheets[sheetName].D1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].E1 !== undefined ? workbook.Sheets[sheetName].E1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].F1 !== undefined ? workbook.Sheets[sheetName].F1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].G1 !== undefined ? workbook.Sheets[sheetName].G1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].H1 !== undefined ? workbook.Sheets[sheetName].H1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].I1 !== undefined ? workbook.Sheets[sheetName].I1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].J1 !== undefined ? workbook.Sheets[sheetName].J1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].K1 !== undefined ? workbook.Sheets[sheetName].K1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].L1 !== undefined ? workbook.Sheets[sheetName].L1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].M1 !== undefined ? workbook.Sheets[sheetName].M1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].N1 !== undefined ? workbook.Sheets[sheetName].N1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].O1 !== undefined ? workbook.Sheets[sheetName].O1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].P1 !== undefined ? workbook.Sheets[sheetName].P1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].Q1 !== undefined ? workbook.Sheets[sheetName].Q1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].R1 !== undefined ? workbook.Sheets[sheetName].R1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].S1 !== undefined ? workbook.Sheets[sheetName].S1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].T1 !== undefined ? workbook.Sheets[sheetName].T1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].U1 !== undefined ? workbook.Sheets[sheetName].U1.v : '');
+                    //headerData.push(workbook.Sheets[sheetName].V1 !== undefined ? workbook.Sheets[sheetName].V1.v : '');
+                });
+
+                headerData = $scope.distinct(headerData.filter(x => x !== ''));
+
+
+                var jsonDatas = [];
+                var i = 0;
+                headerData.forEach(function (customerCode) {
+                    i++;
+                    jsonData.forEach(function (e) {
+
+                        if (Object.values(e)[i].toString().replace(' ', '') === '') {
+                            Object.values(e)[i] = 0;
+                        }
+                        if (parseFloat(Object.values(e)[i]) > 0) {
+                            jsonDatas.push({ Code: Object.values(e)[0].toString(), Quantity: Object.values(e)[i], CustomerCode: customerCode });
+                        }
+                        //jsonData.Code = e.KOD;
+                        //jsonData.Quantity = Object.values(e)[i];
+                        //jsonData.CustomerCode = customerCode;
+                    });
+                });
+
+                var basketType = (($('#basketTypeControlSwitch').length) ? (($('#basketTypeControlSwitch').prop("checked")) ? 1 : 0) : -1);
+                $http({
+                    method: "POST",
+                    url: "/Cart/UploadExcelJsonAll",
+                    headers: { "Content-Type": "Application/json;charset=utf-8" },
+                    data: { excelData: jsonDatas, basketType: parseInt(basketType) }
+
+                }).then(function successCallback(response) {
+                    var status = response.data[0].Value;
+
+                    if (status) {
+                        $scope.excelSuccessMessageAll = response.data[1].Value;
+                        $scope.excelErrorListAll = response.data[2].Value;
+                        $scope.excelSuccessListAll = response.data[4].Value;
+                        $scope.excelNotFoundCodesAll = response.data[3].Value;
+                    }
+                    else {
+                        $scope.excelErrorMessageAll = response.data[1].Value;
+                    }
+
+                    $scope.loadBasketData(false);
+                    B2BServices.getBasketCount();
+                }, function errorCallback(response) {
+                    $scope.loadBasketData(false);
+                    B2BServices.getBasketCount();
+                });
+            }
+        }
+        readerAll.readAsBinaryString(fAll);
+    }

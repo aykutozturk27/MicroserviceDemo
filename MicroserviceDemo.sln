@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.Entities", "MicroserviceDemo.Entities\MicroserviceDemo.Entities.csproj", "{81B63BEC-6983-4483-95E7-23CAABC18AA3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.Core", "MicroserviceDemo.Core\MicroserviceDemo.Core.csproj", "{E5AD899C-7B6E-4661-9122-FC8E8C2A63B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.DataAccess", "MicroserviceDemo.DataAccess\MicroserviceDemo.DataAccess.csproj", "{29D3EE79-9CF3-4F3E-BB71-26D919B23524}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.Business", "MicroserviceDemo.Business\MicroserviceDemo.Business.csproj", "{2DC48CF4-141D-4A92-85E1-F4CA5E1CA45E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductAPI", "ProductAPI", "{04C5ADDE-6199-4C98-BDDD-517233CAD3C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerAPI", "CustomerAPI", "{1C62A520-F416-41E6-80D6-6286E4598E29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.ProductAPI.WebAPI", "ProductAPI\MicroserviceDemo.ProductAPI.WebAPI\MicroserviceDemo.ProductAPI.WebAPI.csproj", "{D46237C7-2802-4AB8-8CD4-D7CA8C3BFEC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.APIGateway", "MicroserviceDemo.APIGateway\MicroserviceDemo.APIGateway.csproj", "{E24494F6-6B74-4FD4-849E-CECC1B57DE41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.CustomerAPI.WebAPI", "CustomerAPI\MicroserviceDemo.CustomerAPI.WebAPI\MicroserviceDemo.CustomerAPI.WebAPI.csproj", "{327F401B-3E63-4C0F-9EB5-4170A8B49DF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthenticationAPI", "AuthenticationAPI", "{5FC1C73A-6E8B-4067-A62A-584EF6F6FAFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceDemo.AuthenticationAPI.WebAPI", "AuthenticationAPI\MicroserviceDemo.AuthenticationAPI.WebAPI\MicroserviceDemo.AuthenticationAPI.WebAPI.csproj", "{AB3C98D9-53EF-4E01-9F09-6E360B8EE308}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7414E72C-CAA0-4163-A1F1-6828D9524341}"
+	ProjectSection(SolutionItems) = preProject
+		test.txt = test.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81B63BEC-6983-4483-95E7-23CAABC18AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81B63BEC-6983-4483-95E7-23CAABC18AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81B63BEC-6983-4483-95E7-23CAABC18AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81B63BEC-6983-4483-95E7-23CAABC18AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5AD899C-7B6E-4661-9122-FC8E8C2A63B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5AD899C-7B6E-4661-9122-FC8E8C2A63B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5AD899C-7B6E-4661-9122-FC8E8C2A63B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5AD899C-7B6E-4661-9122-FC8E8C2A63B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D3EE79-9CF3-4F3E-BB71-26D919B23524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D3EE79-9CF3-4F3E-BB71-26D919B23524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D3EE79-9CF3-4F3E-BB71-26D919B23524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D3EE79-9CF3-4F3E-BB71-26D919B23524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DC48CF4-141D-4A92-85E1-F4CA5E1CA45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC48CF4-141D-4A92-85E1-F4CA5E1CA45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC48CF4-141D-4A92-85E1-F4CA5E1CA45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC48CF4-141D-4A92-85E1-F4CA5E1CA45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46237C7-2802-4AB8-8CD4-D7CA8C3BFEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46237C7-2802-4AB8-8CD4-D7CA8C3BFEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46237C7-2802-4AB8-8CD4-D7CA8C3BFEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46237C7-2802-4AB8-8CD4-D7CA8C3BFEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E24494F6-6B74-4FD4-849E-CECC1B57DE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E24494F6-6B74-4FD4-849E-CECC1B57DE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E24494F6-6B74-4FD4-849E-CECC1B57DE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E24494F6-6B74-4FD4-849E-CECC1B57DE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327F401B-3E63-4C0F-9EB5-4170A8B49DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327F401B-3E63-4C0F-9EB5-4170A8B49DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327F401B-3E63-4C0F-9EB5-4170A8B49DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327F401B-3E63-4C0F-9EB5-4170A8B49DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3C98D9-53EF-4E01-9F09-6E360B8EE308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3C98D9-53EF-4E01-9F09-6E360B8EE308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3C98D9-53EF-4E01-9F09-6E360B8EE308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3C98D9-53EF-4E01-9F09-6E360B8EE308}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D46237C7-2802-4AB8-8CD4-D7CA8C3BFEC3} = {04C5ADDE-6199-4C98-BDDD-517233CAD3C3}
+		{327F401B-3E63-4C0F-9EB5-4170A8B49DF4} = {1C62A520-F416-41E6-80D6-6286E4598E29}
+		{AB3C98D9-53EF-4E01-9F09-6E360B8EE308} = {5FC1C73A-6E8B-4067-A62A-584EF6F6FAFB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {343E4E4D-0C4C-4F79-9635-2F56C0358341}
+	EndGlobalSection
+EndGlobal
